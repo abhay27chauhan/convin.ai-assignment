@@ -59,7 +59,7 @@ function mapDispatchtoProps(dispatch) {
 }
 
 UserInfoCard.propTypes = {
-  userId: PropTypes.number,
+  userId: PropTypes.string,
   loading: PropTypes.bool,
   error: PropTypes.object,
   user: PropTypes.object,

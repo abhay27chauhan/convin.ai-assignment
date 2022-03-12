@@ -13,12 +13,18 @@ function UserList({ total, loading, error, setUserId, fetchUser }) {
     fetchUser();
   }, []);
 
+  const setIdOnClick = (e) => {
+    const id = e.target?.id;
+    if (!id) return;
+    setUserId(id);
+  };
+
   return loading ? (
     <Loader size={60} />
   ) : !error ? (
-    <div className={styles.cards}>
+    <div className={styles.cards} onClick={setIdOnClick}>
       {new Array(total).fill(0).map((_, index) => (
-        <Card key={index} userId={index + 1} setUserId={setUserId} />
+        <Card key={index} userId={index + 1} />
       ))}
     </div>
   ) : (

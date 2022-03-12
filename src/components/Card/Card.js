@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import styles from "./Card.module.scss";
 
-function Card({ userId, setUserId }) {
+function Card({ userId }) {
   return (
-    <div className={styles.card} onClick={() => setUserId(userId)}>
+    <div className={styles.card} id={userId}>
       {userId}
     </div>
   );
@@ -13,7 +13,6 @@ function Card({ userId, setUserId }) {
 
 Card.propTypes = {
   userId: PropTypes.number,
-  setUserId: PropTypes.func,
 };
 
 export default Card;
