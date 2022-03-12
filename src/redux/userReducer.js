@@ -1,7 +1,13 @@
-const fetchReducer = (state, action) => {
+let initialState = {
+  user: null,
+  loading: false,
+  error: null,
+};
+
+const userReducer = (state = initialState, action) => {
   if (action.type === "LOADING") {
     return {
-      result: null,
+      user: null,
       loading: true,
       error: null,
     };
@@ -9,7 +15,7 @@ const fetchReducer = (state, action) => {
 
   if (action.type === "RESPONSE_COMPLETE") {
     return {
-      result: action.payload.response,
+      user: action.payload.response,
       loading: false,
       error: null,
     };
@@ -17,7 +23,7 @@ const fetchReducer = (state, action) => {
 
   if (action.type === "ERROR") {
     return {
-      result: null,
+      user: null,
       loading: false,
       error: action.payload.error,
     };
@@ -26,4 +32,4 @@ const fetchReducer = (state, action) => {
   return state;
 };
 
-export default fetchReducer;
+export default userReducer;
