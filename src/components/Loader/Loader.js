@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styles from "./Loader.module.scss";
 
@@ -12,5 +13,9 @@ function Loader({ size }) {
     </div>
   );
 }
+
+Loader.propTypes = {
+  size: PropTypes.number,
+};
 
 export default Loader;
