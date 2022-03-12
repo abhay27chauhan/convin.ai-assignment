@@ -4,13 +4,16 @@ import UserInfoCard from "components/UserInfoCard/UserInfoCard";
 import UserList from "components/UserList/UserList";
 
 function UserInfo() {
-  const [userSelected, setUserSelected] = useState(null);
-  console.log(userSelected, setUserSelected);
+  const [userId, setUserId] = useState(null);
+
+  function setState(id) {
+    setUserId(id);
+  }
 
   return (
     <>
-      <UserInfoCard />
-      <UserList />
+      <UserInfoCard userId={userId} />
+      <UserList setUserId={setState} />
     </>
   );
 }

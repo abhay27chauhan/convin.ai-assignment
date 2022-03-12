@@ -5,17 +5,19 @@ import initialState from "./initialState";
 import fetchReducer from "./fetchReducer";
 import baseUrl from "./baseUrl";
 
-const useFetch = (url) => {
+const useFetch = (userId) => {
+  const url = userId ? `${baseUrl}/${userId}` : baseUrl;
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
+    if (userId === null) return;
     dispatch({ type: "LOADING" });
 
     const fetchUrl = async () => {
       try {
-        const response = await fetch(baseUrl + url);
+        const response = await fetch(url);
         const data = await response.json();
-        toast.success("User Fetched");
+        toast.success("Data Fetched");
         dispatch({
           type: "RESPONSE_COMPLETE",
           payload: { response: data },
@@ -27,7 +29,7 @@ const useFetch = (url) => {
     };
 
     fetchUrl();
-  }, []);
+  }, [url]);
 
   return [state.result, state.loading, state.error];
 };
