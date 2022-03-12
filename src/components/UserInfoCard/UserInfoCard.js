@@ -19,20 +19,25 @@ function UserInfoCard({ userId }) {
       ) : response == null ? (
         <h1>Click on any below button to display user data</h1>
       ) : (
-        <div>
-          <h1 className={styles.heading}>{response.data.id}</h1>
-          <ul>
-            <li>
-              <strong>First Name:</strong> {response.data.first_name}
-            </li>
-            <li>
-              <strong>Last Name:</strong> {response.data.last_name}
-            </li>
-            <li>
-              <strong>Email:</strong> {response.data.email}
-            </li>
-          </ul>
-        </div>
+        <>
+          <div className={styles.image}>
+            <img src={response.data.avatar} />
+          </div>
+          <div>
+            <h1 className={styles.heading}>{response.data.id}</h1>
+            <ul>
+              <li>
+                <strong>First Name:</strong> {response.data.first_name}
+              </li>
+              <li>
+                <strong>Last Name:</strong> {response.data.last_name}
+              </li>
+              <li>
+                <strong>Email:</strong> {response.data.email}
+              </li>
+            </ul>
+          </div>
+        </>
       )}
     </div>
   );
