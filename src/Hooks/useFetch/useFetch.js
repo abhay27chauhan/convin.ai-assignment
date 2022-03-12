@@ -10,7 +10,13 @@ const useFetch = (userId) => {
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
-    if (userId === null) return;
+    if (userId === null) {
+      dispatch({
+        type: "RESPONSE_COMPLETE",
+        payload: { response: null },
+      });
+      return;
+    }
     dispatch({ type: "LOADING" });
 
     const fetchUrl = async () => {
